@@ -36,3 +36,21 @@
     font-size: 18px;
     color: crimson;
 }
+
+.containerCards{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+}
+
+
+.containerTitulo{
+    margin-bottom: 80px;
+    font-size: 35px;
+}
+.container{
+    padding: 30px;
+}

@@ -1,27 +1,19 @@
-import axios from 'axios';
-import { useState } from 'react';
+import estilos from '../static/Card.module.css'
 
-export function Card(){
-    const [nome, getNome] = useState('')
-    const [apelido, getApelido] = useState('')
-    const [posicao, getPosicao] = useState('')
-    const [atuando, getAtuando] = useState(true)
-    const [pais, getPais] = useState('')
-    const [numero, getNumero] = useState('')
+export function Card({ id, nome, apelido, posicao, atuando, pais, numero, foto }) {
+    const getSituacao = (atuando) => {
+        return atuando ? "Atuando" : "Machucado";
+    }
 
-    axios.get('http://127.0.0.1:8000/api/v1/jogadores/1')
-        .then((response) => {
-            getNome(response.data.nome)
-            getApelido(response.data.apelido)
-            getPosicao(response.data.posicao)
-        })
-
-    return(
-        <>
-            <div>
-                <img src="" alt="" />
-                <h4>{nome}</h4>
-            </div>
-        </>
-    )
+    return (
+        <div className={estilos.card} id={id}>
+            <img src={foto} alt={apelido} className={estilos.imagem} />
+            <h1 className={estilos.apelido}>{apelido}</h1>
+            <h4 className={estilos.detalhe}>Nome: {nome}</h4>
+            <h4 className={estilos.detalhe}>Posição: {posicao}</h4>
+            <h4 className={estilos.detalhe}>Situação: {getSituacao(atuando)}</h4>
+            <h4 className={estilos.detalhe}>País: {pais}</h4>
+            <h4 className={estilos.detalhe}>Número: {numero}</h4>
+        </div>
+    );
 }
